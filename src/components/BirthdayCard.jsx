@@ -19,7 +19,7 @@ const BirthdayCard = () => {
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
 
   // Target date: 7th November 2025 at 12:00 AM
-  const targetDate = new Date("2025-11-07T12:00:00");
+  const targetDate = new Date("2025-11-06T18:30:00Z");
 
   // Check if it's time to show the card
   useEffect(() => {
