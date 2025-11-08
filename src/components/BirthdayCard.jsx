@@ -7,8 +7,11 @@ import "./BirthdayCard.css";
 const BirthdayCard = () => {
   const [celebrate, setCelebrate] = useState(false);
   const audioRef = useRef(null);
-  const [showCard, setShowCard] = useState(false); // New state for showing card or countdown
-  const [timeLeft, setTimeLeft] = useState({}); // New state for countdown
+  const magicalSoundRef = useRef(null);
+  const [showCard, setShowCard] = useState(false);
+  const [showShutter, setShowShutter] = useState(false);
+  const [shutterOpen, setShutterOpen] = useState(false);
+  const [timeLeft, setTimeLeft] = useState({});
 
   // Array of bestie images
   const images = ["/images/1.jpg", "/images/2.jpg", "/images/3.jpg"];
@@ -25,22 +28,23 @@ const BirthdayCard = () => {
   useEffect(() => {
     const now = new Date();
     if (now >= targetDate) {
-      setShowCard(true);
+      setShowShutter(true); // Show shutter page first
     } else {
       setShowCard(false);
+      setShowShutter(false);
     }
   }, []);
 
   // Countdown timer
   useEffect(() => {
-    if (showCard) return; // Stop countdown if card is shown
+    if (showCard || showShutter) return; // Stop countdown if card or shutter is shown
 
     const interval = setInterval(() => {
       const now = new Date();
       const difference = targetDate - now;
 
       if (difference <= 0) {
-        setShowCard(true);
+        setShowShutter(true); // Show shutter page first
         clearInterval(interval);
       } else {
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
@@ -52,7 +56,7 @@ const BirthdayCard = () => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [showCard]);
+  }, [showCard, showShutter]);
 
   // Auto change image every 3 seconds (only when card is shown)
   useEffect(() => {
@@ -105,17 +109,35 @@ const BirthdayCard = () => {
     }
   };
 
-  // Navigation functions for photo gallery
-  const handlePrev = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  // Function to play magical shutter sound from audio file
+  const playMagicalShutterSound = () => {
+    try {
+      if (magicalSoundRef.current) {
+        magicalSoundRef.current.currentTime = 0; // Reset to beginning
+        magicalSoundRef.current.volume = 0.7; // Set volume
+        magicalSoundRef.current.play().catch((error) => {
+          console.log("Magical sound could not be played:", error);
+        });
+      }
+    } catch (error) {
+      console.log("Magical sound could not be played:", error);
+    }
   };
 
-  const handleNext = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  const handleOpenShutter = () => {
+    setShutterOpen(true);
+    // Play magical shutter sound
+    playMagicalShutterSound();
+    // After shutter animation completes, show the main card
+    // Shutter animation takes ~2s (1.2s transition + 0.7s delay for last panel)
+    setTimeout(() => {
+      setShowCard(true);
+      setShowShutter(false);
+    }, 2000); // Wait for shutter animation to complete
   };
 
   // If not time yet, show countdown
-  if (!showCard) {
+  if (!showCard && !showShutter) {
     return (
       <main className="countdown-container">
         <h1 className="countdown-title">Countdown to Mannat's Birthday!</h1>
@@ -133,9 +155,76 @@ const BirthdayCard = () => {
     );
   }
 
+  // Show shutter page after countdown
+  if (showShutter && !showCard) {
+    return (
+      <main className="shutter-container">
+        {/* Magical sound audio element */}
+        <audio ref={magicalSoundRef} src="/audio/magical.mp3" preload="auto" />
+        <div className="shutter-page">
+          <div className="shutter-content">
+            <h1 className="shutter-title">🎉 It's Time! 🎉</h1>
+            <p className="shutter-subtitle">
+              Something magical is waiting behind...
+            </p>
+            <div className="shutter-message">
+              <p className="reveal-text">
+                Pull up the shutters to reveal your surprise!
+              </p>
+              <p className="reveal-hint">
+                ✨ A special celebration awaits you ✨
+              </p>
+            </div>
+          </div>
+
+          {/* Shutter panels */}
+          <div className={`shutter-panels ${shutterOpen ? "open" : ""}`}>
+            <div className="shutter-panel"></div>
+            <div className="shutter-panel"></div>
+            <div className="shutter-panel"></div>
+            <div className="shutter-panel"></div>
+            <div className="shutter-panel"></div>
+            <div className="shutter-panel"></div>
+            <div className="shutter-panel"></div>
+            <div className="shutter-panel"></div>
+          </div>
+
+          {/* Bottom glow with arrow */}
+          <div className="shutter-bottom-glow" onClick={handleOpenShutter}>
+            <div className="glow-effect"></div>
+            <div className="arrow-container">
+              <svg
+                className="arrow-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7 13L12 8L17 13"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M7 18L12 13L17 18"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <p className="click-hint">Click to reveal</p>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
   // Full birthday card template
   return (
-    <main className="main">
+    <main className={`main ${showCard ? "zoom-in" : ""}`}>
       {/* Audio element */}
       <audio ref={audioRef} src={songs[currentSongIndex]} loop={false} />
 
@@ -175,73 +264,7 @@ const BirthdayCard = () => {
         </div>
 
         <div className="page__1-image">
-          {/* Prev Button */}
-          <button
-            onClick={handlePrev}
-            style={{
-              position: "absolute",
-              left: "-50px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              background: "#2b2d42",
-              color: "#edf2f4",
-              border: "none",
-              borderRadius: "50%",
-              width: "40px",
-              height: "40px",
-              fontSize: "18px",
-              cursor: "pointer",
-              transition: "0.4s",
-              zIndex: 10,
-            }}
-            onMouseEnter={(e) => (
-              (e.target.style.background = "transparent"),
-              (e.target.style.border = "1px solid #2b2d42"),
-              (e.target.style.color = "#2b2d42")
-            )}
-            onMouseLeave={(e) => (
-              (e.target.style.background = "#2b2d42"),
-              (e.target.style.border = "none"),
-              (e.target.style.color = "#edf2f4")
-            )}
-          >
-            ‹
-          </button>
-
           <img src={images[currentImageIndex]} alt="Bestie Photo" />
-
-          {/* Next Button */}
-          <button
-            onClick={handleNext}
-            style={{
-              position: "absolute",
-              right: "-50px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              background: "#2b2d42",
-              color: "#edf2f4",
-              border: "none",
-              borderRadius: "50%",
-              width: "40px",
-              height: "40px",
-              fontSize: "18px",
-              cursor: "pointer",
-              transition: "0.4s",
-              zIndex: 10,
-            }}
-            onMouseEnter={(e) => (
-              (e.target.style.background = "transparent"),
-              (e.target.style.border = "1px solid #2b2d42"),
-              (e.target.style.color = "#2b2d42")
-            )}
-            onMouseLeave={(e) => (
-              (e.target.style.background = "#2b2d42"),
-              (e.target.style.border = "none"),
-              (e.target.style.color = "#edf2f4")
-            )}
-          >
-            ›
-          </button>
         </div>
 
         <img src="/images/cake.png" className="cake" alt="cake" />
