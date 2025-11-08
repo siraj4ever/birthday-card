@@ -341,7 +341,11 @@ span {
   width: 100%;
   padding: 20px 0;
   text-align: center;
-  background: linear-gradient(135deg, rgba(43, 45, 66, 0.9), rgba(43, 45, 66, 0.7)); /* Gradient background for depth */
+  background: linear-gradient(
+    135deg,
+    rgba(43, 45, 66, 0.9),
+    rgba(43, 45, 66, 0.7)
+  ); /* Gradient background for depth */
   color: #edf2f4;
   font-size: 18px;
   font-weight: 600;
@@ -370,6 +374,7 @@ span {
   );
   background-size: 300%;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: innerGlow 4s linear infinite;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
@@ -403,10 +408,17 @@ span {
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 30px;
-  background: linear-gradient(45deg, #d4af37, #ffd700, #c9a14a); /* metallic gold gradient */
+  background: linear-gradient(
+    45deg,
+    #d4af37,
+    #ffd700,
+    #c9a14a
+  ); /* metallic gold gradient */
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 10px rgba(212, 175, 55, 0.6), 0 0 20px rgba(212, 175, 55, 0.3);
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.6),
+    0 0 20px rgba(212, 175, 55, 0.3);
 }
 
 .countdown-timer {
@@ -498,7 +510,9 @@ span {
     right: 5%;
   }
 
-  .gift, .gifts, .balloon {
+  .gift,
+  .gifts,
+  .balloon {
     width: 80px;
     height: 80px;
   }
@@ -511,18 +525,21 @@ span {
     transform: translateX(-50%);
   }
 
-  .wishes, .quotes {
+  .wishes,
+  .quotes {
     left: 20px;
     margin: 4rem auto;
     padding: 2rem 1rem;
   }
 
-  .wishes h2, .quotes h2 {
+  .wishes h2,
+  .quotes h2 {
     font-size: 1.5rem;
     margin-bottom: 2px;
   }
 
-  .wishes div, .quotes div {
+  .wishes div,
+  .quotes div {
     font-size: 12px;
     margin-left: 10px;
   }
@@ -613,7 +630,9 @@ span {
     right: 10%;
   }
 
-  .gift, .gifts, .balloon {
+  .gift,
+  .gifts,
+  .balloon {
     width: 60px;
     height: 60px;
   }
@@ -626,17 +645,19 @@ span {
     transform: translateX(-50%);
   }
 
-  .wishes, .quotes {
+  .wishes,
+  .quotes {
     left: 0;
     margin: 3rem auto;
     padding: 1.5rem 1rem;
   }
 
-  .wishes h2, .quotes h2 {
+  .wishes h2,
+  .quotes h2 {
     font-size: 1.6rem;
   }
 
-    .gift {
+  .gift {
     margin-top: 25px;
   }
 
@@ -732,7 +753,9 @@ span {
     right: 15%;
   }
 
-  .gift, .gifts, .balloon {
+  .gift,
+  .gifts,
+  .balloon {
     width: 60px;
     height: 60px;
   }
@@ -745,12 +768,14 @@ span {
     transform: translateX(-50%);
   }
 
-  .wishes, .quotes {
+  .wishes,
+  .quotes {
     margin: rem auto;
     padding: 1rem 0.5rem;
   }
 
-  .wishes h2, .quotes h2 {
+  .wishes h2,
+  .quotes h2 {
     font-size: 1.5rem;
     margin-bottom: 2px;
   }
@@ -763,8 +788,8 @@ span {
     display: none;
   }
 
-
-  .wishes div, .quotes div {
+  .wishes div,
+  .quotes div {
     font-size: 12px;
     margin-left: 10px;
   }
@@ -826,6 +851,491 @@ span {
   .balloon {
     left: 10%;
     top: 470px;
+    height: 120px;
+  }
+}
+
+/* ============================================
+   SHUTTER PAGE STYLES
+   ============================================ */
+
+.shutter-container {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a, #2c2c2c, #1a1a1a);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shutter-page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.shutter-content {
+  position: relative;
+  z-index: 25; /* Higher than shutter panels (z-index: 20) to ensure text is visible */
+  text-align: center;
+  animation: fadeInDown 1s ease-out;
+  margin-bottom: 100px;
+  pointer-events: none; /* Allow clicks to pass through to bottom area */
+}
+
+.shutter-title {
+  font-size: 4rem;
+  font-weight: 900;
+  background: linear-gradient(45deg, #d4af37, #ffd700, #c9a14a, #ffd700);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+  margin-bottom: 20px;
+  text-shadow: 0 0 40px rgba(212, 175, 55, 0.8), 0 0 60px rgba(255, 215, 0, 0.5);
+  filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
+}
+
+.shutter-subtitle {
+  font-size: 1.5rem;
+  color: #edf2f4;
+  font-weight: 300;
+  letter-spacing: 2px;
+  animation: pulse 2s ease-in-out infinite;
+  margin-bottom: 30px;
+  text-shadow: 0 0 20px rgba(237, 242, 244, 0.8),
+    0 0 40px rgba(237, 242, 244, 0.4), 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.shutter-message {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: fadeInUp 1.5s ease-out 0.5s both;
+}
+
+.reveal-text {
+  font-size: 1.3rem;
+  color: #ffd700;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 0.7),
+    0 0 60px rgba(255, 215, 0, 0.4), 2px 2px 4px rgba(0, 0, 0, 0.9);
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+.reveal-hint {
+  font-size: 1.1rem;
+  color: #edf2f4;
+  font-weight: 500;
+  letter-spacing: 1px;
+  opacity: 1;
+  animation: gentleFloat 4s ease-in-out infinite;
+  text-shadow: 0 0 15px rgba(237, 242, 244, 0.8),
+    0 0 30px rgba(237, 242, 244, 0.5), 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Shutter Panels */
+.shutter-panels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 220px); /* Leave space for bottom glow area */
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.shutter-panel {
+  flex: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 26, 26, 0.7) 0%,
+    rgba(44, 44, 44, 0.7) 50%,
+    rgba(26, 26, 26, 0.7) 100%
+  );
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+  transform: translateY(0);
+  transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1), opacity 1.2s ease;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+  pointer-events: none; /* Ensure panels don't block clicks on bottom area */
+}
+
+.shutter-panels.open .shutter-panel {
+  transform: translateY(-100%);
+}
+
+.shutter-panels.open .shutter-panel:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.shutter-panels.open .shutter-panel:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.shutter-panels.open .shutter-panel:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.shutter-panels.open .shutter-panel:nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+.shutter-panels.open .shutter-panel:nth-child(5) {
+  transition-delay: 0.4s;
+}
+
+.shutter-panels.open .shutter-panel:nth-child(6) {
+  transition-delay: 0.5s;
+}
+
+.shutter-panels.open .shutter-panel:nth-child(7) {
+  transition-delay: 0.6s;
+}
+
+.shutter-panels.open .shutter-panel:nth-child(8) {
+  transition-delay: 0.7s;
+}
+
+/* Bottom Glow with Arrow */
+.shutter-bottom-glow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 30; /* Higher than shutter panels to ensure visibility */
+  animation: bounceGlow 2s ease-in-out infinite;
+  background: linear-gradient(
+    to top,
+    rgba(26, 26, 26, 0.9) 0%,
+    rgba(26, 26, 26, 0.6) 40%,
+    rgba(26, 26, 26, 0.3) 70%,
+    transparent 100%
+  );
+  backdrop-filter: blur(8px);
+  border-top: 2px solid rgba(255, 215, 0, 0.2);
+}
+
+.glow-effect {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 180px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(212, 175, 55, 0.9) 0%,
+    rgba(255, 215, 0, 0.7) 25%,
+    rgba(212, 175, 55, 0.5) 50%,
+    rgba(255, 215, 0, 0.3) 70%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  animation: pulseGlow 2s ease-in-out infinite;
+  filter: blur(25px);
+  z-index: 1;
+}
+
+.arrow-container {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 15px;
+  animation: bounceArrow 1.5s ease-in-out infinite;
+  background: rgba(26, 26, 26, 0.6);
+  padding: 15px 25px;
+  border-radius: 50px;
+  border: 2px solid rgba(255, 215, 0, 0.5);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.4),
+    inset 0 0 20px rgba(255, 215, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.arrow-container:hover {
+  background: rgba(26, 26, 26, 0.8);
+  border-color: rgba(255, 215, 0, 0.8);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.6),
+    inset 0 0 25px rgba(255, 215, 0, 0.2);
+  transform: scale(1.1);
+}
+
+.arrow-icon {
+  width: 70px;
+  height: 70px;
+  color: #ffd700;
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1))
+    drop-shadow(0 0 25px rgba(255, 215, 0, 0.6));
+  animation: arrowGlow 2s ease-in-out infinite;
+}
+
+.click-hint {
+  position: relative;
+  z-index: 2;
+  color: #ffd700;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: fadeInOut 2s ease-in-out infinite;
+  margin-top: 5px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.4);
+  background: rgba(26, 26, 26, 0.5);
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes bounceGlow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.2);
+  }
+}
+
+@keyframes bounceArrow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes arrowGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1))
+      drop-shadow(0 0 30px rgba(255, 215, 0, 0.6));
+  }
+}
+
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6),
+      0 0 30px rgba(255, 215, 0, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 25px rgba(255, 215, 0, 0.9),
+      0 0 50px rgba(255, 215, 0, 0.5), 0 0 70px rgba(255, 215, 0, 0.3);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes gentleFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-5px);
+    opacity: 1;
+  }
+}
+
+/* Zoom-in animation for main page */
+.main.zoom-in {
+  animation: zoomInEntry 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes zoomInEntry {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive styles for shutter page */
+@media (max-width: 768px) {
+  .shutter-title {
+    font-size: 2.5rem;
+  }
+
+  .shutter-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .reveal-text {
+    font-size: 1.1rem;
+  }
+
+  .reveal-hint {
+    font-size: 1rem;
+  }
+
+  .shutter-message {
+    margin-top: 30px;
+    gap: 12px;
+  }
+
+  .shutter-bottom-glow {
+    height: 200px;
+  }
+
+  .shutter-panels {
+    height: calc(100% - 200px);
+  }
+
+  .arrow-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .arrow-container {
+    padding: 12px 20px;
+  }
+
+  .click-hint {
+    font-size: 1rem;
+    padding: 6px 15px;
+  }
+
+  .glow-effect {
+    width: 300px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .shutter-title {
+    font-size: 2rem;
+  }
+
+  .shutter-subtitle {
+    font-size: 1rem;
+  }
+
+  .reveal-text {
+    font-size: 1rem;
+  }
+
+  .reveal-hint {
+    font-size: 0.9rem;
+  }
+
+  .shutter-message {
+    margin-top: 25px;
+    gap: 10px;
+  }
+
+  .shutter-bottom-glow {
+    height: 180px;
+  }
+
+  .shutter-panels {
+    height: calc(100% - 180px);
+  }
+
+  .arrow-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .arrow-container {
+    padding: 10px 18px;
+  }
+
+  .click-hint {
+    font-size: 0.9rem;
+    padding: 5px 12px;
+  }
+
+  .glow-effect {
+    width: 250px;
     height: 120px;
   }
 }
