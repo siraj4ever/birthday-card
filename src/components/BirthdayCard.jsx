@@ -140,7 +140,7 @@ const BirthdayCard = () => {
   if (!showCard && !showShutter) {
     return (
       <main className="countdown-container">
-        <h1 className="countdown-title">Countdown to Mannat's Birthday!</h1>
+        <h1 className="countdown-title">Countdown to Bestie's Birthday!</h1>
 
         <div className="glow-text countdown-timer">
           <span>{timeLeft.days} Days</span> :<span>{timeLeft.hours} Hours</span>{" "}
@@ -237,7 +237,7 @@ const BirthdayCard = () => {
             <img src="/images/gift.png" className="gifts" alt="gift" />
             <img src="/images/balloon.png" className="balloon" alt="balloon" />
             <h1>
-              Happy Birthday, <span className="glow-text">Mannat!</span>
+              Happy Birthday, <span className="glow-text">Bestie!</span>
             </h1>
             <h3>
               07<sup>th</sup> November 2025, Friday
