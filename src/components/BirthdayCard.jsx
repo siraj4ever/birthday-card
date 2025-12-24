@@ -22,7 +22,7 @@ const BirthdayCard = () => {
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
 
   // Target date: 6th January 2026 at 12:00 AM IST
-  const targetDate = new Date("2025-11-05T18:30:00Z");
+  const targetDate = new Date("2026-01-05T18:30:00Z");
 
 
   // Check if it's time to show the card
