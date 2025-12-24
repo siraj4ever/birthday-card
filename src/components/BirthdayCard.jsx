@@ -21,8 +21,9 @@ const BirthdayCard = () => {
   const songs = ["/audio/wish.mp3", "/audio/Happy-Birthday.mp3"];
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
 
-  // Target date: 7th November 2025 at 12:00 AM
-  const targetDate = new Date("2025-11-06T18:30:00Z");
+  // Target date: 6th January 2026 at 12:00 AM IST
+  const targetDate = new Date("2026-01-05T18:30:00Z");
+
 
   // Check if it's time to show the card
   useEffect(() => {
@@ -140,7 +141,7 @@ const BirthdayCard = () => {
   if (!showCard && !showShutter) {
     return (
       <main className="countdown-container">
-        <h1 className="countdown-title">Countdown to Bestie's Birthday!</h1>
+        <h1 className="countdown-title">Countdown to Palak's Birthday!</h1>
 
         <div className="glow-text countdown-timer">
           <span>{timeLeft.days} Days</span> :<span>{timeLeft.hours} Hours</span>{" "}
@@ -237,7 +238,7 @@ const BirthdayCard = () => {
             <img src="/images/gift.png" className="gifts" alt="gift" />
             <img src="/images/balloon.png" className="balloon" alt="balloon" />
             <h1>
-              Happy Birthday, <span className="glow-text">Bestie!</span>
+              Happy Birthday, <span className="glow-text">Palak!</span>
             </h1>
             <h3>
               07<sup>th</sup> November 2025, Friday
@@ -280,21 +281,26 @@ const BirthdayCard = () => {
           style={{ marginRight: "-65px", marginTop: "-35px" }}
         />
         <h2>Birthday Wishes 🎁</h2>
+      
         <div className="wishes-grid">
           <div className="wish-card">
-            🎂 Wishing you a day filled with joy, love, and lots of cake!
+            🎂 Happy Birthday to someone who became special without ever meeting in person.
           </div>
+      
           <div className="wish-card">
-            ✨ Keep shining bright — just like you always do!
+            📚 Same university, same classes — and somehow, a real friendship.
           </div>
+      
           <div className="wish-card">
-            💫 May all your dreams come true this year.
+            🌍 Distance never stopped us from sharing laughs, rants, and late-night talks.
           </div>
+      
           <div className="wish-card">
-            🌸 Here’s to more adventures and laughter ahead!
+            🤍 One day we’ll meet — until then, this friendship already means a lot.
           </div>
         </div>
       </section>
+
 
       {/* SECTION 3: FUN QUOTES */}
       <section className="quotes container">
@@ -305,17 +311,18 @@ const BirthdayCard = () => {
           style={{ marginRight: "1115px", marginTop: "-35px" }}
         />
         <h2>Fun Quotes 💛</h2>
+      
         <div className="quotes-grid">
           <div className="quote-card">
-            "Good friends are like stars — you don't always see them, but you
-            know they're always there." ⭐
+            "Some friendships start in classrooms and grow through conversations." 🎓
           </div>
+      
           <div className="quote-card">
-            "Life is better with true friends… and a little bit of cake." 🎂
+            "Distance means nothing when the bond is real." 🌍
           </div>
+      
           <div className="quote-card">
-            "A best friend is someone who makes you laugh even when you think
-            you'll never smile again." 😂
+            "We haven’t met yet — but the friendship already feels familiar." ✨
           </div>
         </div>
       </section>
