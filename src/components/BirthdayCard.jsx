@@ -245,8 +245,8 @@ const BirthdayCard = () => {
             </h3>
             <p>
               Wishing you all the love, laughter, and happiness you truly deserve! 💫  
-              Even though distance kept us from meeting in person so far, you became one of the most genuine parts of my university journey. 🎓  
-              Truly grateful for the bond we’ve built — and here’s to meeting someday! 🤍
+              Even with the distance, you became one of the most genuine parts of my university journey. 🎓  
+              Grateful for our bond — and to meeting someday! 🤍
             </p>
 
             {!celebrate ? (
