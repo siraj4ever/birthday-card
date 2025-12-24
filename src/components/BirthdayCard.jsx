@@ -244,9 +244,9 @@ const BirthdayCard = () => {
               06<sup>th</sup> January 2026, Tuesday
             </h3>
             <p>
-              Wishing you all the love, laughter, and happiness you truly deserve! 💫  
-              Even with the distance, you became one of the most genuine parts of my university journey. 🎓  
-              Grateful for our bond — and to meeting someday! 🤍
+              Wishing you all the love, laughter, and happiness you truly deserve!
+              Even with distance, you became one of the most genuine parts of my university journey.
+              Grateful for our bond — meeting someday!🤍
             </p>
 
             {!celebrate ? (
