@@ -22,7 +22,7 @@ const BirthdayCard = () => {
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
 
   // Target date: 6th January 2026 at 12:00 AM IST
-  const targetDate = new Date("2026-01-05T18:30:00Z");
+  const targetDate = new Date("2025-11-05T18:30:00Z");
 
 
   // Check if it's time to show the card
@@ -150,7 +150,7 @@ const BirthdayCard = () => {
         </div>
 
         <p className="countdown-note">
-          The celebration is coming soon — 7th November 2025! 🎉
+          The celebration is coming soon — 6th January 2026! 🎉
         </p>
       </main>
     );
@@ -241,13 +241,14 @@ const BirthdayCard = () => {
               Happy Birthday, <span className="glow-text">Palak!</span>
             </h1>
             <h3>
-              07<sup>th</sup> November 2025, Friday
+              06<sup>th</sup> January 2026, Tuesday
             </h3>
             <p>
-              Wishing you all the love, laughter, and happiness in the world!
-              You’re amazing, and I’m so grateful for all the fun memories we’ve
-              shared in the office. Here’s to many more!! 💖🎉
+              Wishing you all the love, laughter, and happiness you truly deserve! 💫  
+              Even though distance kept us from meeting in person so far, you became one of the most genuine parts of my university journey. 🎓  
+              Truly grateful for the bond we’ve built — and here’s to meeting someday! 🤍
             </p>
+
             {!celebrate ? (
               <button type="button" className="btn" onClick={handleCelebrate}>
                 <p className="glow-text">Click Here To Celebrate 🎉</p>
